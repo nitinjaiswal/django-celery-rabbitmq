@@ -8,8 +8,8 @@
 </head>
 
 <body ng-app="">
-
-    <form name="myForm">
+    {% if method == "get" %}
+    <form name="myForm" method="POST" action="/">{% csrf_token %}
         <p> Name:<br/>
         <input name="myName" ng-model="myName" required>
         <img src="{% static 'img/bad.png' %}" ng-show="myForm.myName.$invalid" />
@@ -23,9 +23,9 @@
         </p>
 
         <p> Mobile Number:<br/>
-        <input name="mymobileNumber" ng-model="mymobileNumber" ng-pattern="/^\d{10}$/" required>
-        <img src="{% static 'img/bad.png' %}" ng-show="myForm.mymobileNumber.$invalid" />
-        <img src="{% static 'img/tick.png' %}" ng-show="myForm.mymobileNumber.$valid" />
+        <input name="myMobileNumber" ng-model="myMobileNumber" ng-pattern="/^\d{10}$/" required>
+        <img src="{% static 'img/bad.png' %}" ng-show="myForm.myMobileNumber.$invalid" />
+        <img src="{% static 'img/tick.png' %}" ng-show="myForm.myMobileNumber.$valid" />
         </p>
 
         <p> Address:<br/>
@@ -33,7 +33,14 @@
         <img src="{% static 'img/bad.png' %}" ng-show="myForm.myAddress.$invalid" />
         <img src="{% static 'img/tick.png' %}" ng-show="myForm.myAddress.$valid" />
         </p>
+
+        <button type="submit" ng-disabled="myForm.$invalid">Submit</button>
     </form>
+    {% endif %}
+
+    {% if method == "post" %}
+    <p> Thankyou, your details is saved successfully !!</p>
+    {% endif %}
 
 </body>
 

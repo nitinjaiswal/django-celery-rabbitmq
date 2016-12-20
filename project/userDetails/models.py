@@ -15,4 +15,3 @@ class UserAddress(models.Model):
     Model for storing user address
     """
     address = models.CharField(max_length=200)
-
