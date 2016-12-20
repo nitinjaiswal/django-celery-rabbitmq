@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/angular.min.js' %}"></script>
+    <title>django-celery-rabbitmq</title>
+</head>
+
+<body ng-app="">
+
+    <form name="myForm">
+        <p> Name:<br/>
+        <input name="myName" ng-model="myName" required>
+        <img src="{% static 'img/bad.png' %}" ng-show="myForm.myName.$invalid" />
+        <img src="{% static 'img/tick.png' %}" ng-show="myForm.myName.$valid" />
+        </p>
+
+        <p> Email:<br/>
+        <input type="email" name="myEmail" ng-model="myEmail" required>
+        <img src="{% static 'img/bad.png' %}" ng-show="myForm.myEmail.$invalid" />
+        <img src="{% static 'img/tick.png' %}" ng-show="myForm.myEmail.$valid" />
+        </p>
+
+        <p> Mobile Number:<br/>
+        <input name="mymobileNumber" ng-model="mymobileNumber" ng-pattern="/^\d{10}$/" required>
+        <img src="{% static 'img/bad.png' %}" ng-show="myForm.mymobileNumber.$invalid" />
+        <img src="{% static 'img/tick.png' %}" ng-show="myForm.mymobileNumber.$valid" />
+        </p>
+
+        <p> Address:<br/>
+        <input name="myAddress" ng-model="myAddress" required>
+        <img src="{% static 'img/bad.png' %}" ng-show="myForm.myAddress.$invalid" />
+        <img src="{% static 'img/tick.png' %}" ng-show="myForm.myAddress.$valid" />
+        </p>
+    </form>
+
+</body>
+
+</html>
