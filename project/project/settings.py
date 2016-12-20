@@ -116,6 +116,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+DJANGO_SETTINGS_MODULE = "project.settings"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

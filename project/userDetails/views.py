@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import UserDetail, UserAddress
+from .tasks import saveindb
 
 
 def home(request):
@@ -9,6 +9,7 @@ def home(request):
     2. if method is get, it opens home.html showing the form
 
     """
+
     if request.method == "POST":
 
         # retrieving data from form
@@ -17,13 +18,7 @@ def home(request):
         email = request.POST.get("myEmail")
         mobile_number = request.POST.get("myMobileNumber")
 
-        # saving name, email and mobile_number in UserDetail model
-        userdetail = UserDetail(name=name, email_id=email, mobile_number=mobile_number)
-        userdetail.save()
-
-        # saving address in UserAddress model
-        useraddress = UserAddress(address=address)
-        useraddress.save()
+        saveindb(name, email, mobile_number, address)
 
         context = {
             "method": "post"
